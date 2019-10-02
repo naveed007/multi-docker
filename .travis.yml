@@ -1,4 +1,4 @@
-hjlanguage: generic
+language: generic
 sudo: required
 services:
   - docker
