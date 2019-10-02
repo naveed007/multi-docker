@@ -20,7 +20,7 @@ after_success:
   - docker push naveed019/multi-worker,
   - docker push naveed019/multi-
     
- deploy: 
+deploy: 
   provider: elasticbeanstalk
   region: ap-south-1
   app: multi-docker
