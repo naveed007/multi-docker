@@ -17,8 +17,8 @@ after_success:
   - echo "DOCKER_PASSWORD" | docker login docker.io -u "$DOCKER_ID" --password-stdin
   - docker push naveed019/multi-client
   - docker push naveed019/multi-nginx
-  - docker push naveed019/multi-worker,
-  - docker push naveed019/multi-
+  - docker push naveed019/multi-worker
+  - docker push naveed019/multi-server
     
 deploy: 
   provider: elasticbeanstalk
