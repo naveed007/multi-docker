@@ -1,4 +1,4 @@
-language: generic
+hjlanguage: generic
 sudo: required
 services:
   - docker
@@ -14,8 +14,23 @@ after_success:
   - docker build -t naveed019/multi-nginx ./nginx
   - docker build -t naveed019/multi-server ./server
   - docker build -t naveed019/multi-worker ./worker
-  - echo "DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - echo "DOCKER_PASSWORD" | docker login docker.io -u "$DOCKER_ID" --password-stdin
   - docker push naveed019/multi-client
   - docker push naveed019/multi-nginx
-  - docker push naveed019/multi-worker
-  - docker push naveed019/multi-server
+  - docker push naveed019/multi-worker,
+  - docker push naveed019/multi-
+    
+ deploy: 
+  provider: elasticbeanstalk
+  region: ap-south-1
+  app: multi-docker
+  env: MultiDocker-env
+  bucket_name: elasticbeanstalk-ap-south-1-293794245415
+  bucket_path: docker-multi
+  on:
+    branch: master
+  access_key_id:
+    secure: $AWS_ACCESS_KEY  
+  secret_access_key:
+    secure: $AWS_SECRET_KEY
+   
